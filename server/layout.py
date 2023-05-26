@@ -1,8 +1,7 @@
 from dash import html, dcc
 import dash_mantine_components as dmc
-from data import states_fetchall, pie_df, timeline_df, full_df
-from figures import pie_create, timeline_create
-
+from server.data import db_connect, states_fetchall, pie_df, timeline_df, full_df
+from server.figures import pie_create, timeline_create
 
 
 CARD_STYLE = dict(withBorder=True, shadow="sm", radius="md",)
@@ -12,8 +11,9 @@ def get_layout() -> html:
     '''
         Return html layout for app.
     '''
-    full_data = full_df()
+    con = db_connect()
 
+    full_data = full_df(con)
 
     first_row = full_data.iloc[0]
     primary_data = {
@@ -25,10 +25,10 @@ def get_layout() -> html:
         'shift_end':first_row['shift_end'],
     }
 
-    timeline = timeline_create(timeline_df())
-    pie = pie_create(pie_df())
+    timeline = timeline_create(timeline_df(con))
+    pie = pie_create(pie_df(con))
 
-    states = states_fetchall()
+    states = states_fetchall(con)
     multiselect = [
         {"value":states[i]['state'],
          "label":states[i]['state']} for i in range(len(states))]

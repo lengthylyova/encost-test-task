@@ -1,15 +1,24 @@
+import os
 import sqlite3
 import pandas
 
-'''Подключение к БД'''
-con = sqlite3.connect('./testDB.db')
 
-'''Изменение представления данных на выходе'''
-con.row_factory = sqlite3.Row
+''''''
+DIR_PATH = '\\'.join(os.path.dirname(os.path.abspath(__file__)).split('\\')[:-1])
 
 
-# DataFrame всех данных из таблицы.
-def full_df(con=con) -> pandas.DataFrame:
+def db_connect() -> sqlite3.Connection:
+    '''
+        Return connection to db.
+    '''
+    con = sqlite3.connect(f'{DIR_PATH}\\testDB.db')
+    con.row_factory = sqlite3.Row
+    
+    return con
+
+
+
+def full_df(con:sqlite3.Connection) -> pandas.DataFrame:
     '''
         Return DataFrame of all data from db.
     '''
@@ -19,7 +28,7 @@ def full_df(con=con) -> pandas.DataFrame:
     return full_data
 
 
-def pie_df(con=con) -> pandas.DataFrame:
+def pie_df(con:sqlite3.Connection) -> pandas.DataFrame:
     '''
         Return DataFrame of data from db for pie figure
     '''
@@ -29,7 +38,7 @@ def pie_df(con=con) -> pandas.DataFrame:
     return pie_data
 
 
-def timeline_df(con=con) -> pandas.DataFrame:
+def timeline_df(con:sqlite3.Connection) -> pandas.DataFrame:
     '''
         Return DataFrame of data from db for timeline figure.
     '''
@@ -51,7 +60,7 @@ def timeline_df(con=con) -> pandas.DataFrame:
     return timeline_data
 
 
-def states_fetchall():
+def states_fetchall(con:sqlite3.Connection) -> list:
     '''
         Return all states from 'state' column of db.
     '''
