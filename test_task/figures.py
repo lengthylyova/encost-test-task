@@ -42,4 +42,5 @@ def timeline_create(dataframe:DataFrame) -> Figure:
             'Длительность':True,
         }
     )
+    timeline = timeline.update_layout(showlegend=False, yaxis={"title":''})
     return timeline
