@@ -4,7 +4,7 @@ from server.data import db_connect, states_fetchall, pie_df, timeline_df, full_d
 from server.figures import pie_create, timeline_create
 
 
-CARD_STYLE = dict(withBorder=True, shadow="sm", radius="md",)
+CARD_STYLE = dict(withBorder=True, shadow="sm", radius="md", style={"height":"46vh", "overflow":"none"})
 
 
 def get_layout() -> html:

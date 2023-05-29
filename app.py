@@ -1,5 +1,3 @@
-import os
-import sqlite3
 from dash import Output, State, Input
 from dash_extensions.enrich import DashProxy, ServersideOutputTransform, MultiplexerTransform
 from dash.exceptions import PreventUpdate
@@ -13,7 +11,6 @@ class EncostDash(DashProxy):
     def __init__(self, **kwargs):
         self.app_container = None
         super().__init__(transforms=[ServersideOutputTransform(), MultiplexerTransform()], **kwargs)
-
 
 
 app = EncostDash(name=__name__)
