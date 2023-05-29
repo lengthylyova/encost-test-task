@@ -15,7 +15,6 @@ def color_discrete_map_create(dataframe:DataFrame, pk:str, vk:str) -> dict:
         if row[pk] not in color_map:
             color_map[row[pk]] = row[vk]
 
-    print(color_map)
     return color_map
 
 

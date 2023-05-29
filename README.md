@@ -11,10 +11,10 @@ python <some>/<path>/<to>/encost-test-task/app.py
 * Откройте страницу с адресом: http://127.0.0.1:8050;
 ## Результаты:
 ### 1. Внешний вид страницы
-<img src="https://i.imgur.com/W9eotPS.png">
+<img src="https://i.imgur.com/tBNh8qJ.png">
 
 ### 2. При наведении
-<img src="https://i.imgur.com/uwOHfLE.png">
+<img src="https://i.imgur.com/iSY2O0R.png">
 
 ### 3. MultiSelect для фильтров
 <img src="https://i.imgur.com/vo7oVbN.png">
@@ -22,4 +22,4 @@ python <some>/<path>/<to>/encost-test-task/app.py
 
 ### 4. Пример фильтрации
 <img src="https://i.imgur.com/r1NXuvH.png">
-<img src="https://i.imgur.com/kIYmNVX.png">
+<img src="https://i.imgur.com/FSwrFTJ.png">
