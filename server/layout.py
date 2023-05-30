@@ -1,10 +1,10 @@
 from dash import html, dcc
 import dash_mantine_components as dmc
-from server.data import db_connect, states_fetchall, pie_df, timeline_df, full_df
+from server.data import db_connect, reasons_fetchall, pie_df, timeline_df, full_df
 from server.figures import pie_create, timeline_create
 
 
-CARD_STYLE = dict(withBorder=True, shadow="sm", radius="md", style={"height":"46vh", "overflow":"none"})
+CARD_STYLE = dict(withBorder=True, shadow="sm", radius="md", style={"height":"46vh", "overflow":"none", "z-index":"99"})
 
 
 def get_layout() -> html:
@@ -28,10 +28,10 @@ def get_layout() -> html:
     timeline = timeline_create(timeline_df(con))
     pie = pie_create(pie_df(con))
 
-    states = states_fetchall(con)
+    reasons = reasons_fetchall(con)
     multiselect = [
-        {"value":states[i]['state'],
-         "label":states[i]['state']} for i in range(len(states))]
+        {"value":reasons[i]['reason'],
+         "label":reasons[i]['reason']} for i in range(len(reasons))]
 
     return html.Div([
         dmc.Paper([
@@ -49,7 +49,7 @@ def get_layout() -> html:
                             id="multi-select",
                             value=[],
                             data=multiselect,
-                            style={"width": "50%", "marginBottom": 10},),
+                            style={"width": "50%", "marginBottom": 10, "z-index":"101"},),
                         dmc.Button(
                             'Фильтровать',
                             id='button1'),

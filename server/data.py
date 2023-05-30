@@ -62,13 +62,13 @@ def timeline_df(con:sqlite3.Connection) -> pandas.DataFrame:
     return timeline_data
 
 
-def states_fetchall(con:sqlite3.Connection) -> list:
+def reasons_fetchall(con:sqlite3.Connection) -> list:
     '''
-        Return all states from 'state' column of db.
+        Return all reasons from 'state' column of db.
     '''
     cur = con.cursor()
-    query = "SELECT DISTINCT state from sources;"
-    states = cur.execute(query)
-    states = states.fetchall()
+    query = "SELECT DISTINCT reason from sources;"
+    reasons = cur.execute(query)
+    reasons = reasons.fetchall()
 
-    return states
+    return reasons
