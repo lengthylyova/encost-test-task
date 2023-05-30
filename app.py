@@ -29,7 +29,7 @@ def update_timeline(value, click):
         return timeline
     
     df = timeline_df(con)
-    df = df[df['Состояние'].isin(value)]
+    df = df[df['Причина'].isin(value)]
     timeline = timeline_create(df)
 
     return timeline
